@@ -1,0 +1,303 @@
+.exercise-weapons-container {
+  padding: 15px;
+  max-width: 1200px;
+  margin: 0 auto;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  min-height: calc(100vh - 200px);
+
+  h2 {
+    text-align: center;
+    color: #e8d7b1;
+    margin-bottom: 10px;
+    font-size: 22px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+
+  .info-card {
+    background: rgba(232, 215, 177, 0.95);
+    border: 2px solid #d9a441;
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin-bottom: 12px;
+    text-align: center;
+    color: #4b2e05;
+    font-size: 13px;
+  }
+
+  .content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .config-section,
+  .summary-section {
+    background: rgba(232, 215, 177, 0.95);
+    border: 2px solid #d9a441;
+    border-radius: 8px;
+    padding: 14px;
+
+    h3 {
+      color: #4b2e05;
+      margin-top: 0;
+      margin-bottom: 10px;
+      border-bottom: 2px solid #d9a441;
+      padding-bottom: 6px;
+      font-size: 15px;
+    }
+    p {
+      color: #5e5e5e;
+    }
+  }
+
+  .form-group {
+    margin-bottom: 12px;
+
+    label {
+      display: block;
+      font-weight: bold;
+      color: #4b2e05;
+      margin-bottom: 5px;
+      font-size: 12px;
+    }
+
+    small {
+      display: block;
+      color: #5e5e5e;
+      font-size: 0.85em;
+      margin-top: 4px;
+    }
+
+    .error-text {
+      color: #c41e3a;
+    }
+  }
+
+  .chip-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+
+    .chip {
+      cursor: pointer;
+      padding: 6px 12px;
+      border: 2px solid #d9a441;
+      border-radius: 20px;
+      background: #fff;
+      color: #4b2e05;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 13px;
+
+      input {
+        display: none;
+      }
+
+      &.active {
+        background: #d9a441;
+        color: #fff;
+        font-weight: bold;
+      }
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+    }
+  }
+
+  .skill-range {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    input[type="number"] {
+      flex: 1;
+      padding: 8px;
+      border: 2px solid #d9a441;
+      border-radius: 6px;
+      font-size: 14px;
+      text-align: center;
+
+      &.error {
+        border-color: #c41e3a;
+        background: rgba(196, 30, 58, 0.1);
+      }
+    }
+
+    .arrow {
+      font-size: 16px;
+      color: #3e5c3a;
+      font-weight: bold;
+    }
+  }
+
+  .slider {
+    width: 100%;
+    height: 8px;
+    border-radius: 4px;
+    background: #e8d7b1;
+    outline: none;
+    cursor: pointer;
+
+    &::-webkit-slider-thumb {
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #d9a441;
+      cursor: pointer;
+    }
+
+    &::-moz-range-thumb {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #d9a441;
+      cursor: pointer;
+      border: none;
+    }
+  }
+
+  .extra-options {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    .checkbox-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      color: #4b2e05;
+
+      input[type="checkbox"] {
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+      }
+    }
+
+    .weapon-select {
+      label {
+        display: block;
+        font-weight: bold;
+        color: #4b2e05;
+        margin-bottom: 8px;
+      }
+
+      select {
+        width: 100%;
+        padding: 10px;
+        border: 2px solid #d9a441;
+        border-radius: 6px;
+        background: #fff;
+        color: #4b2e05;
+        font-size: 14px;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .results {
+    .result-group {
+      margin-bottom: 20px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #d9a441;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      h4 {
+        color: #4b2e05;
+        margin-top: 0;
+        margin-bottom: 12px;
+      }
+    }
+
+    .cost-chips {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+
+      .chip-result {
+        background: #3e5c3a;
+        color: #e8d7b1;
+        padding: 10px 16px;
+        border-radius: 20px;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        max-width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+
+        .coin-icon {
+          flex-shrink: 0;
+        }
+      }
+
+      .or-text {
+        color: #5e5e5e;
+        font-style: italic;
+      }
+    }
+
+    .weapons-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+
+      .weapon-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 8px 12px;
+        background: rgba(62, 92, 58, 0.1);
+        border-radius: 6px;
+
+        .weapon-icon {
+          width: 24px;
+          height: 24px;
+          object-fit: contain;
+          image-rendering: pixelated;
+        }
+
+        span {
+          color: #4b2e05;
+          font-weight: 500;
+        }
+      }
+
+      .none-text {
+        color: #5e5e5e;
+        font-style: italic;
+        text-align: center;
+        padding: 20px;
+      }
+    }
+
+    .time-display {
+      background: #3e5c3a;
+      color: #e8d7b1;
+      padding: 16px;
+      border-radius: 8px;
+      font-size: 18px;
+      font-weight: bold;
+      text-align: center;
+    }
+  }
+}
