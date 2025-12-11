@@ -1,0 +1,305 @@
+@import "../../../../../../shared-styles/variables";
+
+.exercise-weapons-container {
+  padding: 15px;
+  max-width: 1200px;
+  margin: 0 auto;
+  background: $bg-dark;
+  backdrop-filter: $backdrop-blur;
+  border-radius: 12px;
+  min-height: calc(100vh - 200px);
+
+  h2 {
+    text-align: center;
+    color: $tibia-gold-light;
+    margin-bottom: 10px;
+    font-size: $font-size-xxl;
+    text-shadow: $text-shadow;
+  }
+
+  .info-card {
+    background: $bg-light;
+    border: $border-gold;
+    border-radius: $border-radius;
+    padding: 10px 14px;
+    margin-bottom: 12px;
+    text-align: center;
+    color: $tibia-brown-dark;
+    font-size: $font-size-sm;
+  }
+
+  .content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .config-section,
+  .summary-section {
+    background: $bg-light;
+    border: $border-gold;
+    border-radius: $border-radius;
+    padding: 14px;
+
+    h3 {
+      color: $tibia-brown-dark;
+      margin-top: 0;
+      margin-bottom: 10px;
+      border-bottom: 2px solid $tibia-gold;
+      padding-bottom: 6px;
+      font-size: $font-size-lg;
+    }
+    p {
+      color: $tibia-gray;
+    }
+  }
+
+  .form-group {
+    margin-bottom: 12px;
+
+    label {
+      display: block;
+      font-weight: bold;
+      color: $tibia-brown-dark;
+      margin-bottom: 5px;
+      font-size: $font-size-xs;
+    }
+
+    small {
+      display: block;
+      color: $tibia-gray;
+      font-size: 0.85em;
+      margin-top: 4px;
+    }
+
+    .error-text {
+      color: $tibia-red;
+    }
+  }
+
+  .chip-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+
+    .chip {
+      cursor: pointer;
+      padding: 6px 12px;
+      border: 2px solid $tibia-gold;
+      border-radius: $border-radius-pill;
+      background: $bg-white;
+      color: $tibia-brown-dark;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: $font-size-sm;
+
+      input {
+        display: none;
+      }
+
+      &.active {
+        background: $tibia-gold;
+        color: $tibia-white;
+        font-weight: bold;
+      }
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+    }
+  }
+
+  .skill-range {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    input[type="number"] {
+      flex: 1;
+      padding: 8px;
+      border: 2px solid $tibia-gold;
+      border-radius: 6px;
+      font-size: 14px;
+      text-align: center;
+
+      &.error {
+        border-color: $tibia-red;
+        background: $bg-red-light;
+      }
+    }
+
+    .arrow {
+      font-size: 16px;
+      color: $tibia-green;
+      font-weight: bold;
+    }
+  }
+
+  .slider {
+    width: 100%;
+    height: 8px;
+    border-radius: 4px;
+    background: $tibia-gold-light;
+    outline: none;
+    cursor: pointer;
+
+    &::-webkit-slider-thumb {
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: $tibia-gold;
+      cursor: pointer;
+    }
+
+    &::-moz-range-thumb {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: $tibia-gold;
+      cursor: pointer;
+      border: none;
+    }
+  }
+
+  .extra-options {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    .checkbox-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      color: $tibia-brown-dark;
+
+      input[type="checkbox"] {
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+      }
+    }
+
+    .weapon-select {
+      label {
+        display: block;
+        font-weight: bold;
+        color: $tibia-brown-dark;
+        margin-bottom: 8px;
+      }
+
+      select {
+        width: 100%;
+        padding: 10px;
+        border: 2px solid $tibia-gold;
+        border-radius: 6px;
+        background: $bg-white;
+        color: $tibia-brown-dark;
+        font-size: 14px;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .results {
+    .result-group {
+      margin-bottom: 20px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid $tibia-gold;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      h4 {
+        color: $tibia-brown-dark;
+        margin-top: 0;
+        margin-bottom: 12px;
+      }
+    }
+
+    .cost-chips {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+
+      .chip-result {
+        background: $tibia-green;
+        color: $tibia-gold-light;
+        padding: 10px 16px;
+        border-radius: $border-radius-pill;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        max-width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+
+        .coin-icon {
+          flex-shrink: 0;
+        }
+      }
+
+      .or-text {
+        color: $tibia-gray;
+        font-style: italic;
+      }
+    }
+
+    .weapons-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+
+      .weapon-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 8px 12px;
+        background: $bg-green-light;
+        border-radius: 6px;
+
+        .weapon-icon {
+          width: 24px;
+          height: 24px;
+          object-fit: contain;
+          image-rendering: pixelated;
+        }
+
+        span {
+          color: $tibia-brown-dark;
+          font-weight: 500;
+        }
+      }
+
+      .none-text {
+        color: $tibia-gray;
+        font-style: italic;
+        text-align: center;
+        padding: 20px;
+      }
+    }
+
+    .time-display {
+      background: $tibia-green;
+      color: $tibia-gold-light;
+      padding: 16px;
+      border-radius: $border-radius;
+      font-size: $font-size-xl;
+      font-weight: bold;
+      text-align: center;
+    }
+  }
+}
