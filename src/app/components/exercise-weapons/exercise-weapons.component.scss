@@ -1,305 +1,551 @@
-@import "../../../../../../shared-styles/variables";
+@import '../../../../../../shared-styles/variables';
 
 .exercise-weapons-container {
-  padding: 15px;
-  max-width: 1200px;
-  margin: 0 auto;
-  background: $bg-dark;
-  backdrop-filter: $backdrop-blur;
-  border-radius: 12px;
-  min-height: calc(100vh - 200px);
+	padding: 15px;
+	max-width: 1200px;
+	margin: 0 auto;
+	// background: $bg-dark;
+	backdrop-filter: $backdrop-blur;
+	border-radius: 12px;
 
-  h2 {
-    text-align: center;
-    color: $tibia-gold-light;
-    margin-bottom: 10px;
-    font-size: $font-size-xxl;
-    text-shadow: $text-shadow;
-  }
+	@media (max-width: 1200px) {
+		padding: 12px;
+		border-radius: 0;
+		backdrop-filter: none;
+	}
 
-  .info-card {
-    background: $bg-light;
-    border: $border-gold;
-    border-radius: $border-radius;
-    padding: 10px 14px;
-    margin-bottom: 12px;
-    text-align: center;
-    color: $tibia-brown-dark;
-    font-size: $font-size-sm;
-  }
+	h2 {
+		text-align: center;
+		color: $tibia-gold-light;
+		margin-bottom: 10px;
+		font-size: $font-size-xxl;
+		text-shadow: $text-shadow;
 
-  .content-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
+		@media (max-width: 1200px) {
+			margin-bottom: 10px;
+			font-size: 1.5rem;
+		}
+	}
 
-    @media (max-width: 768px) {
-      grid-template-columns: 1fr;
-    }
-  }
+	.info-card {
+		background: $bg-light;
+		border: $border-gold;
+		border-radius: $border-radius;
+		padding: 10px 14px;
+		margin-bottom: 12px;
+		text-align: center;
+		color: $tibia-brown-dark;
+		font-size: $font-size-sm;
 
-  .config-section,
-  .summary-section {
-    background: $bg-light;
-    border: $border-gold;
-    border-radius: $border-radius;
-    padding: 14px;
+		@media (max-width: 1200px) {
+			padding: 10px 12px;
+			margin-bottom: 10px;
+			font-size: 0.95rem;
+		}
+	}
 
-    h3 {
-      color: $tibia-brown-dark;
-      margin-top: 0;
-      margin-bottom: 10px;
-      border-bottom: 2px solid $tibia-gold;
-      padding-bottom: 6px;
-      font-size: $font-size-lg;
-    }
-    p {
-      color: $tibia-gray;
-    }
-  }
+	.content-grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 12px;
 
-  .form-group {
-    margin-bottom: 12px;
+		@media (max-width: 1200px) {
+			gap: 10px;
+		}
 
-    label {
-      display: block;
-      font-weight: bold;
-      color: $tibia-brown-dark;
-      margin-bottom: 5px;
-      font-size: $font-size-xs;
-    }
+		@media (min-width: 1201px) {
+			grid-template-columns: 1fr 1fr;
+		}
+	}
 
-    small {
-      display: block;
-      color: $tibia-gray;
-      font-size: 0.85em;
-      margin-top: 4px;
-    }
+	.config-section,
+	.summary-section {
+		background: $bg-light;
+		border: $border-gold;
+		border-radius: $border-radius;
+		padding: 14px;
 
-    .error-text {
-      color: $tibia-red;
-    }
-  }
+		@media (max-width: 1200px) {
+			padding: 12px;
+		}
 
-  .chip-group {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
+		h3 {
+			color: $tibia-brown-dark;
+			margin-top: 0;
+			margin-bottom: 10px;
+			border-bottom: 2px solid $tibia-gold;
+			padding-bottom: 6px;
+			font-size: $font-size-lg;
 
-    .chip {
-      cursor: pointer;
-      padding: 6px 12px;
-      border: 2px solid $tibia-gold;
-      border-radius: $border-radius-pill;
-      background: $bg-white;
-      color: $tibia-brown-dark;
-      transition: all 0.2s;
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      font-size: $font-size-sm;
+			@media (max-width: 1200px) {
+				font-size: 1.15rem;
+				margin-bottom: 8px;
+			}
+		}
+		p {
+			color: $tibia-gray;
 
-      input {
-        display: none;
-      }
+			@media (max-width: 1200px) {
+				font-size: 0.95rem;
+			}
+		}
+	}
 
-      &.active {
-        background: $tibia-gold;
-        color: $tibia-white;
-        font-weight: bold;
-      }
+	.form-group {
+		margin-bottom: 12px;
 
-      &:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      }
-    }
-  }
+		@media (max-width: 1200px) {
+			margin-bottom: 10px;
+		}
 
-  .skill-range {
-    display: flex;
-    align-items: center;
-    gap: 12px;
+		label {
+			display: block;
+			font-weight: bold;
+			color: $tibia-brown-dark;
+			margin-bottom: 5px;
+			font-size: $font-size-xs;
 
-    input[type="number"] {
-      flex: 1;
-      padding: 8px;
-      border: 2px solid $tibia-gold;
-      border-radius: 6px;
-      font-size: 14px;
-      text-align: center;
+			@media (max-width: 1200px) {
+				font-size: 0.95rem;
+				margin-bottom: 6px;
+			}
+		}
 
-      &.error {
-        border-color: $tibia-red;
-        background: $bg-red-light;
-      }
-    }
+		small {
+			display: block;
+			color: $tibia-gray;
+			font-size: 0.85em;
+			margin-top: 4px;
 
-    .arrow {
-      font-size: 16px;
-      color: $tibia-green;
-      font-weight: bold;
-    }
-  }
+			@media (max-width: 1200px) {
+				font-size: 0.9rem;
+			}
+		}
 
-  .slider {
-    width: 100%;
-    height: 8px;
-    border-radius: 4px;
-    background: $tibia-gold-light;
-    outline: none;
-    cursor: pointer;
+		.error-text {
+			color: $tibia-red;
+		}
+	}
 
-    &::-webkit-slider-thumb {
-      appearance: none;
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      background: $tibia-gold;
-      cursor: pointer;
-    }
+	.chip-group {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 6px;
 
-    &::-moz-range-thumb {
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      background: $tibia-gold;
-      cursor: pointer;
-      border: none;
-    }
-  }
+		@media (max-width: 1200px) {
+			gap: 8px;
+		}
 
-  .extra-options {
-    margin-bottom: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+		.chip {
+			cursor: pointer;
+			padding: 6px 12px;
+			border: 2px solid $tibia-gold;
+			border-radius: $border-radius-pill;
+			background: $bg-white;
+			color: $tibia-brown-dark;
+			transition: all 0.2s;
+			display: flex;
+			align-items: center;
+			gap: 4px;
+			font-size: $font-size-sm;
 
-    .checkbox-label {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      cursor: pointer;
-      color: $tibia-brown-dark;
+			@media (max-width: 1200px) {
+				padding: 8px 14px;
+				font-size: 0.95rem;
+			}
 
-      input[type="checkbox"] {
-        width: 20px;
-        height: 20px;
-        cursor: pointer;
-      }
-    }
+			input {
+				display: none;
+			}
 
-    .weapon-select {
-      label {
-        display: block;
-        font-weight: bold;
-        color: $tibia-brown-dark;
-        margin-bottom: 8px;
-      }
+			&.active {
+				background: $tibia-gold;
+				color: $tibia-white;
+				font-weight: bold;
+			}
 
-      select {
-        width: 100%;
-        padding: 10px;
-        border: 2px solid $tibia-gold;
-        border-radius: 6px;
-        background: $bg-white;
-        color: $tibia-brown-dark;
-        font-size: 14px;
-        cursor: pointer;
-      }
-    }
-  }
+			&:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+			}
+		}
+	}
 
-  .results {
-    .result-group {
-      margin-bottom: 20px;
-      padding-bottom: 20px;
-      border-bottom: 1px solid $tibia-gold;
+	.skill-range {
+		display: flex;
+		align-items: center;
+		gap: 12px;
 
-      &:last-child {
-        border-bottom: none;
-      }
+		input[type='number'] {
+			flex: 1;
+			padding: 8px;
+			border: 2px solid $tibia-gold;
+			border-radius: 6px;
+			font-size: 14px;
+			text-align: center;
 
-      h4 {
-        color: $tibia-brown-dark;
-        margin-top: 0;
-        margin-bottom: 12px;
-      }
-    }
+			@media (max-width: 1200px) {
+				padding: 10px;
+				font-size: 1rem;
+			}
 
-    .cost-chips {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
+			&.error {
+				border-color: $tibia-red;
+				background: $bg-red-light;
+			}
+		}
 
-      .chip-result {
-        background: $tibia-green;
-        color: $tibia-gold-light;
-        padding: 10px 16px;
-        border-radius: $border-radius-pill;
-        font-weight: bold;
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        max-width: 100%;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
+		.arrow {
+			font-size: 16px;
+			color: $tibia-green;
+			font-weight: bold;
 
-        .coin-icon {
-          flex-shrink: 0;
-        }
-      }
+			@media (max-width: 1200px) {
+				font-size: 1.2rem;
+			}
+		}
+	}
 
-      .or-text {
-        color: $tibia-gray;
-        font-style: italic;
-      }
-    }
+	.slider {
+		width: 100%;
+		height: 8px;
+		border-radius: 4px;
+		background: $tibia-gold-light;
+		outline: none;
+		cursor: pointer;
 
-    .weapons-list {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
+		&::-webkit-slider-thumb {
+			appearance: none;
+			width: 20px;
+			height: 20px;
+			border-radius: 50%;
+			background: $tibia-gold;
+			cursor: pointer;
+		}
 
-      .weapon-item {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        padding: 8px 12px;
-        background: $bg-green-light;
-        border-radius: 6px;
+		&::-moz-range-thumb {
+			width: 20px;
+			height: 20px;
+			border-radius: 50%;
+			background: $tibia-gold;
+			cursor: pointer;
+			border: none;
+		}
+	}
 
-        .weapon-icon {
-          width: 24px;
-          height: 24px;
-          object-fit: contain;
-          image-rendering: pixelated;
-        }
+	.extra-options {
+		margin-bottom: 20px;
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
 
-        span {
-          color: $tibia-brown-dark;
-          font-weight: 500;
-        }
-      }
+		.checkbox-label {
+			display: flex;
+			align-items: center;
+			gap: 8px;
+			cursor: pointer;
+			color: $tibia-brown-dark;
 
-      .none-text {
-        color: $tibia-gray;
-        font-style: italic;
-        text-align: center;
-        padding: 20px;
-      }
-    }
+			input[type='checkbox'] {
+				width: 20px;
+				height: 20px;
+				cursor: pointer;
+			}
+		}
 
-    .time-display {
-      background: $tibia-green;
-      color: $tibia-gold-light;
-      padding: 16px;
-      border-radius: $border-radius;
-      font-size: $font-size-xl;
-      font-weight: bold;
-      text-align: center;
-    }
-  }
+		.weapon-select {
+			label {
+				display: block;
+				font-weight: bold;
+				color: $tibia-brown-dark;
+				margin-bottom: 8px;
+			}
+
+			select {
+				width: 100%;
+				padding: 10px;
+				border: 2px solid $tibia-gold;
+				border-radius: 6px;
+				background: $bg-white;
+				color: $tibia-brown-dark;
+				font-size: 14px;
+				cursor: pointer;
+			}
+		}
+	}
+
+	.results {
+		.result-group {
+			margin-bottom: 20px;
+			padding-bottom: 20px;
+			border-bottom: 1px solid $tibia-gold;
+
+			&:last-child {
+				border-bottom: none;
+			}
+
+			h4 {
+				color: $tibia-brown-dark;
+				margin-top: 0;
+				margin-bottom: 12px;
+			}
+		}
+
+		.cost-chips {
+			display: flex;
+			align-items: center;
+			gap: 12px;
+			flex-wrap: wrap;
+
+			.chip-result {
+				background: $tibia-green;
+				color: $tibia-gold-light;
+				padding: 10px 16px;
+				border-radius: $border-radius-pill;
+				font-weight: bold;
+				display: flex;
+				align-items: center;
+				gap: 6px;
+				max-width: 100%;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+				position: relative;
+
+				.coin-icon {
+					flex-shrink: 0;
+				}
+
+				&.chip-tc {
+					padding-right: 8px;
+
+					.config-btn {
+						width: 28px;
+						height: 28px;
+						padding: 0;
+						margin-left: 4px;
+						min-width: 28px;
+						line-height: 28px;
+
+						mat-icon,
+						::ng-deep mat-icon,
+						::ng-deep .mat-icon {
+							font-size: 18px;
+							width: 18px;
+							height: 18px;
+							line-height: 18px;
+							color: $tibia-gold-light;
+							opacity: 0.8;
+							transition: opacity 0.2s;
+						}
+
+						&:hover {
+							mat-icon,
+							::ng-deep mat-icon,
+							::ng-deep .mat-icon {
+								opacity: 1;
+							}
+						}
+					}
+				}
+			}
+
+			.chip-brl {
+				background: #e61c34;
+				color: white;
+				font-weight: bold;
+				padding-right: 8px;
+
+				.coin-icon {
+					font-weight: bold;
+					font-size: 16px;
+					line-height: 1;
+					display: inline-block;
+				}
+
+				.buy-btn {
+					width: 28px;
+					height: 28px;
+					padding: 0;
+					margin-left: 4px;
+					min-width: 28px;
+					line-height: 28px;
+					text-decoration: none;
+					display: inline-flex;
+					align-items: center;
+					justify-content: center;
+
+					mat-icon,
+					::ng-deep mat-icon,
+					::ng-deep .mat-icon {
+						font-size: 18px;
+						width: 18px;
+						height: 18px;
+						line-height: 18px;
+						color: white;
+						opacity: 0.8;
+						transition: opacity 0.2s;
+					}
+
+					&:hover {
+						mat-icon,
+						::ng-deep mat-icon,
+						::ng-deep .mat-icon {
+							opacity: 1;
+						}
+					}
+				}
+			}
+
+			.chip-loading {
+				background: #999;
+				color: white;
+				opacity: 0.6;
+			}
+
+			.chip-unavailable {
+				background: #666;
+				color: white;
+				opacity: 0.5;
+				font-style: italic;
+				padding-right: 8px;
+
+				.buy-btn {
+					width: 28px;
+					height: 28px;
+					padding: 0;
+					margin-left: 4px;
+					min-width: 28px;
+					line-height: 28px;
+					text-decoration: none;
+					display: inline-flex;
+					align-items: center;
+					justify-content: center;
+
+					mat-icon,
+					::ng-deep mat-icon,
+					::ng-deep .mat-icon {
+						font-size: 18px;
+						width: 18px;
+						height: 18px;
+						line-height: 18px;
+						color: white;
+						opacity: 0.8;
+						transition: opacity 0.2s;
+					}
+
+					&:hover {
+						mat-icon,
+						::ng-deep mat-icon,
+						::ng-deep .mat-icon {
+							opacity: 1;
+						}
+					}
+				}
+			}
+
+			.or-text {
+				color: $tibia-gray;
+				font-style: italic;
+			}
+		}
+
+		.tc-config-inline {
+			margin-top: 16px;
+			padding: 16px;
+			background: rgba($tibia-gold, 0.1);
+			border: 2px solid $tibia-gold;
+			border-radius: $border-radius;
+			animation: slideDown 0.2s ease-out;
+
+			.tc-config-content {
+				display: flex;
+				flex-direction: column;
+				gap: 8px;
+
+				label {
+					font-weight: bold;
+					color: $tibia-brown-dark;
+					font-size: $font-size-sm;
+				}
+
+				input {
+					width: 100%;
+					padding: 10px 12px;
+					border: 2px solid $tibia-gold;
+					border-radius: $border-radius;
+					background: $bg-white;
+					color: $tibia-brown-dark;
+					font-size: $font-size-md;
+					font-weight: 500;
+
+					&:focus {
+						outline: none;
+						border-color: $tibia-green;
+						box-shadow: 0 0 0 3px rgba($tibia-green, 0.1);
+					}
+				}
+
+				small {
+					color: $tibia-gray;
+					font-size: 12px;
+				}
+			}
+		}
+
+		@keyframes slideDown {
+			from {
+				opacity: 0;
+				transform: translateY(-10px);
+			}
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+		.weapons-list {
+			display: flex;
+			flex-direction: column;
+			gap: 8px;
+
+			.weapon-item {
+				display: flex;
+				align-items: center;
+				gap: 10px;
+				padding: 8px 12px;
+				background: $bg-green-light;
+				border-radius: 6px;
+
+				.weapon-icon {
+					width: 24px;
+					height: 24px;
+					object-fit: contain;
+					image-rendering: pixelated;
+				}
+
+				span {
+					color: $tibia-brown-dark;
+					font-weight: 500;
+				}
+			}
+
+			.none-text {
+				color: $tibia-gray;
+				font-style: italic;
+				text-align: center;
+				padding: 20px;
+			}
+		}
+
+		.time-display {
+			background: $tibia-green;
+			color: $tibia-gold-light;
+			padding: 16px;
+			border-radius: $border-radius;
+			font-size: $font-size-xl;
+			font-weight: bold;
+			text-align: center;
+		}
+	}
 }

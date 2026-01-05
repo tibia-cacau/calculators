@@ -1,3 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import "../../shared-styles/tibia-theme.scss";
+@import 'tibia-theme.scss';
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+	height: auto;
+	min-height: 0;
+	overflow-x: hidden;
+	width: 100%;
+	box-sizing: border-box;
+	background: #ffffff;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+body {
+	-webkit-text-size-adjust: 100%;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
