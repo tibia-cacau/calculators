@@ -1,121 +1,154 @@
 <div class="imbuements-cost-container">
-  <h2>Imbuements Cost Calculator</h2>
+	<h2>Imbuements Cost Calculator</h2>
 
-  <!-- Single Card Container -->
-  <div class="main-card">
-    <!-- Configuration -->
-    <div class="config-section">
-      <h3>CONFIGURATIONS</h3>
-      <form [formGroup]="configForm" class="config-form">
-        <div class="form-group">
-          <label>🪙 Gold Token price</label>
-          <input
-            type="number"
-            formControlName="goldToken"
-            placeholder="20,000"
-            step="1000"
-          />
-        </div>
+	<!-- Single Card Container -->
+	<div class="main-card">
+		<!-- Configuration -->
+		<div class="config-section">
+			<h3>CONFIGURATIONS</h3>
+			<form
+				[formGroup]="configForm"
+				class="config-form"
+			>
+				<div class="form-group">
+					<label>🪙 Gold Token price</label>
+					<input
+						type="number"
+						formControlName="goldToken"
+						placeholder="20,000"
+						step="1000"
+					/>
+				</div>
 
-        <div class="form-group">
-          <label>Tier</label>
-          <select formControlName="tier">
-            <option *ngFor="let option of tierOptions" [value]="option.value">
-              {{ option.name }}
-            </option>
-          </select>
-        </div>
-      </form>
-    </div>
+				<div class="form-group">
+					<label>Tier</label>
+					<select formControlName="tier">
+						<option
+							*ngFor="let option of tierOptions"
+							[value]="option.value"
+						>
+							{{ option.name }}
+						</option>
+					</select>
+				</div>
+			</form>
+		</div>
 
-    <!-- Tabs for Recipes -->
-    <div class="tabs">
-      <button
-        *ngFor="let recipe of recipes; let i = index"
-        [class.active]="selectedRecipeIndex === i"
-        (click)="selectRecipe(i)"
-      >
-        {{ recipe.name }}
-      </button>
-    </div>
+		<!-- Tabs for Recipes -->
+		<div class="tabs">
+			<button
+				*ngFor="let recipe of recipes; let i = index"
+				[class.active]="selectedRecipeIndex === i"
+				(click)="selectRecipe(i)"
+			>
+				{{ recipe.name }}
+			</button>
+		</div>
 
-    <!-- Materials Input -->
-    <div class="materials-section">
-      <form [formGroup]="materialForms[selectedRecipeIndex]">
-        <div
-          *ngFor="let material of getCurrentMaterials(); let idx = index"
-          class="material-row"
-          [class.disabled]="!isUsedInCurrentTier(idx)"
-        >
-          <div class="tier-badge" *ngIf="isUsedInCurrentTier(idx)">
-            {{ getTierBadge(idx) }}
-          </div>
+		<!-- Materials Input -->
+		<div class="materials-section">
+			<form [formGroup]="materialForms[selectedRecipeIndex]">
+				<div
+					*ngFor="
+						let material of getCurrentMaterials();
+						let idx = index
+					"
+					class="material-row"
+					[class.disabled]="!isUsedInCurrentTier(idx)"
+				>
+					<div
+						class="tier-badge"
+						*ngIf="isUsedInCurrentTier(idx)"
+					>
+						{{ getTierBadge(idx) }}
+					</div>
 
-          <img
-            [src]="material.src"
-            [alt]="material.name"
-            class="material-icon"
-          />
+					<img
+						[src]="material.src"
+						[alt]="material.name"
+						class="material-icon"
+					/>
 
-          <div class="material-input">
-            <label>{{ material.name }} </label>
-            <input
-              type="number"
-              [formControlName]="material.name"
-              [placeholder]="material.amount + ',000'"
-              step="100"
-              [disabled]="!isUsedInCurrentTier(idx)"
-            />
-          </div>
+					<div class="material-input">
+						<label>{{ material.name }} </label>
+						<input
+							type="number"
+							[formControlName]="material.name"
+							[placeholder]="material.amount + ',000'"
+							step="100"
+							[disabled]="!isUsedInCurrentTier(idx)"
+						/>
+					</div>
 
-          <div class="buy-indicators">
-            <div
-              class="buy-icon market"
-              [class.active]="
-                isUsedInCurrentTier(idx) && !shouldBuyWithToken(idx)
-              "
-              title="Comprar no Market"
-            >
-              <img src="/assets/images/market.png" alt="Market" />
-            </div>
-            <div
-              class="buy-icon token"
-              [class.active]="
-                isUsedInCurrentTier(idx) && shouldBuyWithToken(idx)
-              "
-              title="Comprar com Gold Token"
-            >
-              <img src="/assets/images/goldToken.png" alt="Gold Token" />
-            </div>
-          </div>
-        </div>
-      </form>
+					<div class="buy-indicators">
+						<div
+							class="buy-icon market"
+							[class.active]="
+								isUsedInCurrentTier(idx) &&
+								!shouldBuyWithToken(idx)
+							"
+							title="Comprar no Market"
+						>
+							<img
+								src="/assets/images/market.png"
+								alt="Market"
+							/>
+						</div>
+						<div
+							class="buy-icon token"
+							[class.active]="
+								isUsedInCurrentTier(idx) &&
+								shouldBuyWithToken(idx)
+							"
+							title="Comprar com Gold Token"
+						>
+							<img
+								src="/assets/images/goldToken.png"
+								alt="Gold Token"
+							/>
+						</div>
+					</div>
+				</div>
+			</form>
 
-      <!-- NPC Command -->
-      <div class="npc-command" *ngIf="result && npcDialogue">
-        <code>{{ npcDialogue }}</code>
-        <button
-          class="copy-btn"
-          (click)="copyToClipboard(npcDialogue)"
-          title="Copiar"
-        >
-          <mat-icon>content_copy</mat-icon>
-        </button>
-      </div>
-    </div>
+			<!-- NPC Command -->
+			<div
+				class="npc-command"
+				*ngIf="result && npcDialogue"
+			>
+				<code>{{ npcDialogue }}</code>
+				<button
+					class="copy-btn"
+					(click)="copyToClipboard(npcDialogue)"
+					title="Copiar"
+				>
+					<mat-icon>content_copy</mat-icon>
+				</button>
+			</div>
+		</div>
 
-    <!-- Total Cost -->
-    <div class="total-cost" *ngIf="result">
-      <h4>Custo Total</h4>
-      <div class="cost-value">
-        <img src="/assets/images/goldCoin.gif" alt="Gold" class="gold-icon" />
-        {{ formatNumber(result.lowestCost) }}
-      </div>
-      <div class="savings" *ngIf="getSavings() > 0">
-        Economia: {{ formatNumber(getSavings()) }} gp ({{
-          getSavingsPercentage().toFixed(1)
-        }}%)
-      </div>
-    </div>
-  </div>
+		<!-- Total Cost -->
+		<div
+			class="total-cost"
+			*ngIf="result"
+		>
+			<h4>Custo Total</h4>
+			<div class="cost-value">
+				<img
+					src="/assets/images/goldCoin.gif"
+					alt="Gold"
+					class="gold-icon"
+				/>
+				{{ formatNumber(result.lowestCost) }}
+			</div>
+			<div
+				class="savings"
+				*ngIf="getSavings() > 0"
+			>
+				Economia: {{ formatNumber(getSavings()) }} gp ({{
+					getSavingsPercentage().toFixed(1)
+				}}%)
+			</div>
+		</div>
+	</div>
 </div>
