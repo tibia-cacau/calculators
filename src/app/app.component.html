@@ -1,17 +1,17 @@
-<div class="calculators-container">
-  <nav class="tabs">
-    <a
-      routerLink="./"
-      routerLinkActive="active"
-      [routerLinkActiveOptions]="{ exact: true }"
-    >
-      <span class="tab-icon"></span> Exercise Weapons
-    </a>
-    <a routerLink="./imbuements" routerLinkActive="active">
-      <span class="tab-icon"></span> Imbuements Cost
-    </a>
-  </nav>
-  <main>
-    <router-outlet></router-outlet>
-  </main>
+<div class="tibia-container">
+	<div class="tibia-card">
+		<div class="card-header">
+			<h2>
+				<mat-icon>calculate</mat-icon>
+				Calculadoras
+			</h2>
+		</div>
+
+		<div class="card-content">
+			<app-tibia-tabs [tabs]="tabs"></app-tibia-tabs>
+			<main>
+				<router-outlet></router-outlet>
+			</main>
+		</div>
+	</div>
 </div>

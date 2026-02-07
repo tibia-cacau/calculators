@@ -1,266 +1,287 @@
-<div class="exercise-weapons-container">
-  <h2>Exercise Weapons Calculator</h2>
+<div class="info-card">
+	<p>
+		<strong>Calcule</strong> quanto tempo e dinheiro você precisa para
+		treinar seu personagem usando Exercise Weapons!
+	</p>
+</div>
 
-  <div class="info-card">
-    <p>
-      <strong>Calcule</strong> quanto tempo e dinheiro você precisa para treinar
-      seu personagem usando Exercise Weapons!
-    </p>
-  </div>
+<div class="content-grid">
+	<!-- Character Configuration -->
+	<div class="config-section">
+		<h3>Character</h3>
 
-  <div class="content-grid">
-    <!-- Character Configuration -->
-    <div class="config-section">
-      <h3>Character</h3>
+		<form [formGroup]="characterForm">
+			<!-- Vocation -->
+			<div class="form-group">
+				<label>Vocação</label>
+				<div class="chip-group">
+					<label
+						*ngFor="let option of vocationOptions"
+						class="chip"
+						[class.active]="
+							characterForm.get('vocation')?.value ===
+							option.value
+						"
+					>
+						<input
+							type="radio"
+							formControlName="vocation"
+							[value]="option.value"
+						/>
+						<span>{{ option.icon }} {{ option.label }}</span>
+					</label>
+				</div>
+			</div>
 
-      <form [formGroup]="characterForm">
-        <!-- Vocation -->
-        <div class="form-group">
-          <label>Vocação</label>
-          <div class="chip-group">
-            <label
-              *ngFor="let option of vocationOptions"
-              class="chip"
-              [class.active]="
-                characterForm.get('vocation')?.value === option.value
-              "
-            >
-              <input
-                type="radio"
-                formControlName="vocation"
-                [value]="option.value"
-              />
-              <span>{{ option.icon }} {{ option.label }}</span>
-            </label>
-          </div>
-        </div>
+			<!-- Skill -->
+			<div class="form-group">
+				<label>Skill</label>
+				<div class="chip-group">
+					<label
+						*ngFor="let option of skillOptions"
+						class="chip"
+						[class.active]="
+							characterForm.get('skill')?.value === option.value
+						"
+					>
+						<input
+							type="radio"
+							formControlName="skill"
+							[value]="option.value"
+						/>
+						<span>{{ option.label }}</span>
+					</label>
+				</div>
+			</div>
 
-        <!-- Skill -->
-        <div class="form-group">
-          <label>Skill</label>
-          <div class="chip-group">
-            <label
-              *ngFor="let option of skillOptions"
-              class="chip"
-              [class.active]="
-                characterForm.get('skill')?.value === option.value
-              "
-            >
-              <input
-                type="radio"
-                formControlName="skill"
-                [value]="option.value"
-              />
-              <span>{{ option.label }}</span>
-            </label>
-          </div>
-        </div>
+			<!-- Skills Range -->
+			<div class="form-group">
+				<label>Skill Level</label>
+				<div class="skill-range">
+					<input
+						type="number"
+						formControlName="currentSkill"
+						placeholder="Current"
+						[class.error]="invalidSkill"
+					/>
+					<span class="arrow"></span>
+					<input
+						type="number"
+						formControlName="targetSkill"
+						placeholder="Target"
+						[class.error]="invalidSkill"
+					/>
+				</div>
+				<small
+					*ngIf="invalidSkill"
+					class="error-text"
+					>Target deve ser maior que Current</small
+				>
+			</div>
 
-        <!-- Skills Range -->
-        <div class="form-group">
-          <label>Skill Level</label>
-          <div class="skill-range">
-            <input
-              type="number"
-              formControlName="currentSkill"
-              placeholder="Current"
-              [class.error]="invalidSkill"
-            />
-            <span class="arrow"></span>
-            <input
-              type="number"
-              formControlName="targetSkill"
-              placeholder="Target"
-              [class.error]="invalidSkill"
-            />
-          </div>
-          <small *ngIf="invalidSkill" class="error-text"
-            >Target deve ser maior que Current</small
-          >
-        </div>
+			<!-- Percentage Left -->
+			<div class="form-group">
+				<label
+					>% faltante para o próximo nível:
+					{{ characterForm.get('percentageLeft')?.value }}%</label
+				>
+				<input
+					type="range"
+					formControlName="percentageLeft"
+					min="0"
+					max="100"
+					step="0.01"
+					class="slider"
+				/>
+				<small
+					>0% = já completou o nível atual | 100% = acabou de ganhar o
+					nível atual</small
+				>
+			</div>
 
-        <!-- Percentage Left -->
-        <div class="form-group">
-          <label
-            >% faltante para o próximo nível:
-            {{ characterForm.get("percentageLeft")?.value }}%</label
-          >
-          <input
-            type="range"
-            formControlName="percentageLeft"
-            min="0"
-            max="100"
-            step="0.01"
-            class="slider"
-          />
-          <small
-            >0% = já completou o nível atual | 100% = acabou de ganhar o nível
-            atual</small
-          >
-        </div>
+			<!-- Loyalty Bonus -->
+			<div class="form-group">
+				<label
+					>Loyalty Bonus: +{{
+						characterForm.get('loyaltyBonus')?.value
+					}}
+					%</label
+				>
+				<input
+					type="range"
+					formControlName="loyaltyBonus"
+					min="0"
+					max="50"
+					step="5"
+					class="slider"
+				/>
+			</div>
+		</form>
+	</div>
 
-        <!-- Loyalty Bonus -->
-        <div class="form-group">
-          <label
-            >Loyalty Bonus: +{{
-              characterForm.get("loyaltyBonus")?.value
-            }}
-            %</label
-          >
-          <input
-            type="range"
-            formControlName="loyaltyBonus"
-            min="0"
-            max="50"
-            step="5"
-            class="slider"
-          />
-        </div>
-      </form>
-    </div>
+	<!-- Summary -->
+	<div class="summary-section">
+		<h3>Summary</h3>
 
-    <!-- Summary -->
-    <div class="summary-section">
-      <h3>Summary</h3>
+		<!-- Extra Options -->
+		<form
+			[formGroup]="extraForm"
+			class="extra-options"
+		>
+			<label class="checkbox-label">
+				<input
+					type="checkbox"
+					formControlName="hasDummy"
+				/>
+				<span>Exercise Dummy</span>
+			</label>
+			<label class="checkbox-label">
+				<input
+					type="checkbox"
+					formControlName="isDouble"
+				/>
+				<span>Double Event</span>
+			</label>
 
-      <!-- Extra Options -->
-      <form [formGroup]="extraForm" class="extra-options">
-        <label class="checkbox-label">
-          <input type="checkbox" formControlName="hasDummy" />
-          <span>Exercise Dummy</span>
-        </label>
-        <label class="checkbox-label">
-          <input type="checkbox" formControlName="isDouble" />
-          <span>Double Event</span>
-        </label>
+			<div class="weapon-select">
+				<label>Weapon Type</label>
+				<select formControlName="exerciseWeapon">
+					<option
+						*ngFor="let option of weaponOptions"
+						[value]="option.value"
+					>
+						{{ option.label }}
+					</option>
+				</select>
+			</div>
+		</form>
 
-        <div class="weapon-select">
-          <label>Weapon Type</label>
-          <select formControlName="exerciseWeapon">
-            <option *ngFor="let option of weaponOptions" [value]="option.value">
-              {{ option.label }}
-            </option>
-          </select>
-        </div>
-      </form>
+		<!-- Results -->
+		<div
+			class="results"
+			*ngIf="result"
+		>
+			<div class="result-group">
+				<h4>Cost</h4>
+				<div class="cost-chips">
+					<div
+						class="chip-result"
+						[matTooltip]="
+							formatNumberComplete(result.cost.tc) + ' TC'
+						"
+						matTooltipPosition="above"
+					>
+						<img
+							src="/assets/images/tibiacoin.png"
+							alt="TC"
+							class="coin-icon"
+						/>
+						{{ formatNumber(result.cost.tc) }} TC
+					</div>
+					<span class="or-text">ou</span>
+					<div
+						class="chip-result"
+						[matTooltip]="
+							formatNumberComplete(result.cost.gold) + ' gp'
+						"
+						matTooltipPosition="above"
+					>
+						<img
+							src="/assets/images/goldcoin.png"
+							alt="Gold"
+							class="coin-icon"
+						/>
+						{{ formatNumber(result.cost.gold) }} gp
+					</div>
+				</div>
+			</div>
 
-      <!-- Results -->
-      <div class="results" *ngIf="result">
-        <div class="result-group">
-          <h4>Cost</h4>
-          <div class="cost-chips">
-            <div
-              class="chip-result"
-              [matTooltip]="formatNumberComplete(result.cost.tc) + ' TC'"
-              matTooltipPosition="above"
-            >
-              <img
-                src="/assets/images/tibiacoin.png"
-                alt="TC"
-                class="coin-icon"
-              />
-              {{ formatNumber(result.cost.tc) }} TC
-            </div>
-            <span class="or-text">ou</span>
-            <div
-              class="chip-result"
-              [matTooltip]="formatNumberComplete(result.cost.gold) + ' gp'"
-              matTooltipPosition="above"
-            >
-              <img
-                src="/assets/images/goldcoin.png"
-                alt="Gold"
-                class="coin-icon"
-              />
-              {{ formatNumber(result.cost.gold) }} gp
-            </div>
-          </div>
-        </div>
+			<div class="result-group">
+				<h4>Weapons Needed</h4>
+				<div class="weapons-list">
+					<div
+						class="weapon-item"
+						*ngIf="result.weaponsRequired.lasting > 0"
+						[matTooltip]="
+							formatNumberComplete(
+								result.weaponsRequired.lasting
+							) + 'x Lasting (14,400 charges)'
+						"
+						matTooltipPosition="above"
+					>
+						<img
+							src="/assets/images/weapons/lastingSword.gif"
+							alt="Lasting"
+							class="weapon-icon"
+						/>
+						<span
+							>{{ formatNumber(result.weaponsRequired.lasting) }}x
+							Lasting (14,400 charges)</span
+						>
+					</div>
+					<div
+						class="weapon-item"
+						*ngIf="result.weaponsRequired.durable > 0"
+						[matTooltip]="
+							formatNumberComplete(
+								result.weaponsRequired.durable
+							) + 'x Durable (1,800 charges)'
+						"
+						matTooltipPosition="above"
+					>
+						<img
+							src="/assets/images/weapons/durableSword.gif"
+							alt="Durable"
+							class="weapon-icon"
+						/>
+						<span
+							>{{ formatNumber(result.weaponsRequired.durable) }}x
+							Durable (1,800 charges)</span
+						>
+					</div>
+					<div
+						class="weapon-item"
+						*ngIf="result.weaponsRequired.regular > 0"
+						[matTooltip]="
+							formatNumberComplete(
+								result.weaponsRequired.regular
+							) + 'x Regular (500 charges)'
+						"
+						matTooltipPosition="above"
+					>
+						<img
+							src="/assets/images/weapons/regularSword.gif"
+							alt="Regular"
+							class="weapon-icon"
+						/>
+						<span
+							>{{ formatNumber(result.weaponsRequired.regular) }}x
+							Regular (500 charges)</span
+						>
+					</div>
+					<div
+						*ngIf="
+							result.weaponsRequired.lasting === 0 &&
+							result.weaponsRequired.durable === 0 &&
+							result.weaponsRequired.regular === 0
+						"
+						class="none-text"
+					>
+						Nenhuma arma necessária
+					</div>
+				</div>
+			</div>
 
-        <div class="result-group">
-          <h4>Weapons Needed</h4>
-          <div class="weapons-list">
-            <div
-              class="weapon-item"
-              *ngIf="result.weaponsRequired.lasting > 0"
-              [matTooltip]="
-                formatNumberComplete(result.weaponsRequired.lasting) +
-                'x Lasting (14,400 charges)'
-              "
-              matTooltipPosition="above"
-            >
-              <img
-                src="/assets/images/weapons/lastingSword.gif"
-                alt="Lasting"
-                class="weapon-icon"
-              />
-              <span
-                >{{ formatNumber(result.weaponsRequired.lasting) }}x Lasting
-                (14,400 charges)</span
-              >
-            </div>
-            <div
-              class="weapon-item"
-              *ngIf="result.weaponsRequired.durable > 0"
-              [matTooltip]="
-                formatNumberComplete(result.weaponsRequired.durable) +
-                'x Durable (1,800 charges)'
-              "
-              matTooltipPosition="above"
-            >
-              <img
-                src="/assets/images/weapons/durableSword.gif"
-                alt="Durable"
-                class="weapon-icon"
-              />
-              <span
-                >{{ formatNumber(result.weaponsRequired.durable) }}x Durable
-                (1,800 charges)</span
-              >
-            </div>
-            <div
-              class="weapon-item"
-              *ngIf="result.weaponsRequired.regular > 0"
-              [matTooltip]="
-                formatNumberComplete(result.weaponsRequired.regular) +
-                'x Regular (500 charges)'
-              "
-              matTooltipPosition="above"
-            >
-              <img
-                src="/assets/images/weapons/regularSword.gif"
-                alt="Regular"
-                class="weapon-icon"
-              />
-              <span
-                >{{ formatNumber(result.weaponsRequired.regular) }}x Regular
-                (500 charges)</span
-              >
-            </div>
-            <div
-              *ngIf="
-                result.weaponsRequired.lasting === 0 &&
-                result.weaponsRequired.durable === 0 &&
-                result.weaponsRequired.regular === 0
-              "
-              class="none-text"
-            >
-              Nenhuma arma necessária
-            </div>
-          </div>
-        </div>
-
-        <div class="result-group">
-          <h4>Tempo Necessário</h4>
-          <div
-            class="time-display"
-            [matTooltip]="formatTimeComplete(result.cost.seconds)"
-            matTooltipPosition="above"
-          >
-            {{ formatTime(result.cost.seconds) }}
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+			<div class="result-group">
+				<h4>Tempo Necessário</h4>
+				<div
+					class="time-display"
+					[matTooltip]="formatTimeComplete(result.cost.seconds)"
+					matTooltipPosition="above"
+				>
+					{{ formatTime(result.cost.seconds) }}
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

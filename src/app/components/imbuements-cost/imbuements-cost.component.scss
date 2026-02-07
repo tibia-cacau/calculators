@@ -1,320 +1,306 @@
-.imbuements-cost-container {
-  padding: 30px 20px;
-  max-width: 600px;
-  margin: 0 auto;
-  background: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(10px);
-  border-radius: 12px;
-  min-height: calc(100vh - 200px);
+@import '../../../../../../shared-styles/variables';
 
-  h2 {
-    text-align: center;
-    color: #e8d7b1;
-    margin-bottom: 30px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  }
+.main-card {
+	background: $bg-tibia-gold;
+	border: 2px solid $tibia-gold;
+	border-radius: 12px;
+	padding: 0;
+	overflow: hidden;
+	max-width: 600px;
+	margin: 0 auto;
+}
 
-  .main-card {
-    background: rgba(232, 215, 177, 0.95);
-    border: 2px solid #d9a441;
-    border-radius: 12px;
-    padding: 0;
-    overflow: hidden;
-  }
+.config-section {
+	background: $bg-tibia-gold;
+	padding: 20px;
+	border-bottom: 2px solid $tibia-gold;
 
-  .config-section {
-    background: rgba(217, 164, 65, 0.1);
-    padding: 20px;
-    border-bottom: 2px solid #d9a441;
+	h3 {
+		color: $tibia-brown-dark;
+		font-size: 11px;
+		font-weight: 600;
+		letter-spacing: 0.5px;
+		margin: 0 0 15px 0;
+		text-transform: uppercase;
+	}
 
-    h3 {
-      color: #4b2e05;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      margin: 0 0 15px 0;
-      text-transform: uppercase;
-    }
+	.config-form {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 15px;
 
-    .config-form {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 15px;
+		.form-group {
+			label {
+				display: block;
+				color: $tibia-brown-dark;
+				font-weight: 500;
+				margin-bottom: 8px;
+			}
 
-      .form-group {
-        label {
-          display: block;
-          color: #4b2e05;
-          font-size: 13px;
-          font-weight: 500;
-          margin-bottom: 8px;
-        }
+			input,
+			select {
+				width: 100%;
+				padding: 10px 12px;
+				background: #fff;
+				border: 2px solid $tibia-gold;
+				border-radius: 6px;
+				color: $tibia-brown-dark;
+				font-size: 14px;
 
-        input,
-        select {
-          width: 100%;
-          padding: 10px 12px;
-          background: #fff;
-          border: 2px solid #d9a441;
-          border-radius: 6px;
-          color: #4b2e05;
-          font-size: 14px;
+				&:focus {
+					outline: none;
+					border-color: $tibia-green;
+					box-shadow: 0 0 0 2px rgba($tibia-green, 0.1);
+				}
 
-          &:focus {
-            outline: none;
-            border-color: #3e5c3a;
-            box-shadow: 0 0 0 2px rgba(62, 92, 58, 0.1);
-          }
+				&::placeholder {
+					color: $tibia-gray;
+				}
+			}
+		}
+	}
+}
 
-          &::placeholder {
-            color: #5e5e5e;
-          }
-        }
-      }
-    }
-  }
+.tabs {
+	display: flex;
+	background: $tibia-green;
+	border-bottom: 2px solid $tibia-gold;
 
-  .tabs {
-    display: flex;
-    background: #3e5c3a;
-    border-bottom: 2px solid #d9a441;
+	button {
+		flex: 1;
+		padding: 12px 16px;
+		background: transparent;
+		border: none;
+		border-bottom: 3px solid transparent;
+		color: $tibia-gold-light;
+		font-weight: 500;
+		font-size: 13px;
+		cursor: pointer;
+		transition: all 0.2s;
 
-    button {
-      flex: 1;
-      padding: 12px 16px;
-      background: transparent;
-      border: none;
-      border-bottom: 3px solid transparent;
-      color: #e8d7b1;
-      font-weight: 500;
-      font-size: 13px;
-      cursor: pointer;
-      transition: all 0.2s;
+		&:hover:not(.active) {
+			color: $tibia-white;
+			background: rgba($tibia-gold-light, 0.1);
+		}
 
-      &:hover:not(.active) {
-        color: #fff;
-        background: rgba(232, 215, 177, 0.1);
-      }
+		&.active {
+			color: $tibia-brown-dark;
+			background: $tibia-gold;
+			border-bottom-color: $tibia-brown-dark;
+		}
+	}
+}
 
-      &.active {
-        color: #4b2e05;
-        background: #d9a441;
-        border-bottom-color: #4b2e05;
-      }
-    }
-  }
+.materials-section {
+	padding: 20px;
+	background: $tibia-green-light;
 
-  .materials-section {
-    padding: 20px;
-    background: #fff;
+	form {
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
+	}
 
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
+	.material-row {
+		position: relative;
+		display: grid;
+		grid-template-columns: 50px 1fr auto;
+		gap: 12px;
+		align-items: center;
+		padding: 12px;
+		background: rgba($tibia-gold-light, 0.3);
+		border: 2px solid $tibia-gold;
+		border-radius: 8px;
+		transition: all 0.2s;
 
-    .material-row {
-      position: relative;
-      display: grid;
-      grid-template-columns: 50px 1fr auto;
-      gap: 12px;
-      align-items: center;
-      padding: 12px;
-      background: rgba(232, 215, 177, 0.3);
-      border: 2px solid #d9a441;
-      border-radius: 8px;
-      transition: all 0.2s;
+		&:hover:not(.disabled) {
+			background: rgba($tibia-gold, 0.2);
+			border-color: $tibia-green;
+		}
 
-      &:hover:not(.disabled) {
-        background: rgba(217, 164, 65, 0.2);
-        border-color: #3e5c3a;
-      }
+		&.disabled {
+			opacity: 0.4;
+			pointer-events: none;
+		}
 
-      &.disabled {
-        opacity: 0.4;
-        pointer-events: none;
-      }
+		.tier-badge {
+			position: absolute;
+			top: -8px;
+			left: 8px;
+			background: $tibia-green;
+			color: $tibia-gold-light;
+			font-size: 10px;
+			font-weight: bold;
+			padding: 3px 8px;
+			border-radius: 10px;
+		}
 
-      .tier-badge {
-        position: absolute;
-        top: -8px;
-        left: 8px;
-        background: #3e5c3a;
-        color: #e8d7b1;
-        font-size: 10px;
-        font-weight: bold;
-        padding: 3px 8px;
-        border-radius: 10px;
-      }
+		.material-icon {
+			width: 40px;
+			height: 40px;
+			object-fit: contain;
+			background: $tibia-green-light;
+			border-radius: 6px;
+			padding: 4px;
+			border: 1px solid $tibia-gold;
+		}
 
-      .material-icon {
-        width: 40px;
-        height: 40px;
-        object-fit: contain;
-        background: #fff;
-        border-radius: 6px;
-        padding: 4px;
-        border: 1px solid #d9a441;
-      }
+		.material-input {
+			flex: 1;
 
-      .material-input {
-        flex: 1;
+			label {
+				display: block;
+				color: $tibia-brown-dark;
+				font-size: 12px;
+				font-weight: 500;
+				margin-bottom: 6px;
+			}
 
-        label {
-          display: block;
-          color: #4b2e05;
-          font-size: 12px;
-          font-weight: 500;
-          margin-bottom: 6px;
-        }
+			input {
+				width: 100%;
+				padding: 8px 12px;
+				background: #fff;
+				border: 2px solid $tibia-gold;
+				border-radius: 6px;
+				color: $tibia-brown-dark;
+				font-size: 14px;
 
-        input {
-          width: 100%;
-          padding: 8px 12px;
-          background: #fff;
-          border: 2px solid #d9a441;
-          border-radius: 6px;
-          color: #4b2e05;
-          font-size: 14px;
+				&:focus {
+					outline: none;
+					border-color: $tibia-green;
+					box-shadow: 0 0 0 2px rgba($tibia-green, 0.1);
+				}
 
-          &:focus {
-            outline: none;
-            border-color: #3e5c3a;
-            box-shadow: 0 0 0 2px rgba(62, 92, 58, 0.1);
-          }
+				&::placeholder {
+					color: $tibia-gray;
+				}
+			}
+		}
 
-          &::placeholder {
-            color: #5e5e5e;
-          }
-        }
-      }
+		.buy-indicators {
+			display: flex;
+			gap: 8px;
 
-      .buy-indicators {
-        display: flex;
-        gap: 8px;
+			.buy-icon {
+				width: 40px;
+				height: 40px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				border-radius: 8px;
+				background: rgba($tibia-gold-light, 0.5);
+				opacity: 0.3;
+				transition: all 0.2s;
+				cursor: default;
+				border: 2px solid transparent;
 
-        .buy-icon {
-          width: 40px;
-          height: 40px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          border-radius: 8px;
-          background: rgba(232, 215, 177, 0.5);
-          opacity: 0.3;
-          transition: all 0.2s;
-          cursor: default;
-          border: 2px solid transparent;
+				img {
+					width: 24px;
+					height: 24px;
+					object-fit: contain;
+				}
 
-          img {
-            width: 24px;
-            height: 24px;
-            object-fit: contain;
-          }
+				&.active {
+					opacity: 1;
+					transform: scale(1.05);
 
-          &.active {
-            opacity: 1;
-            transform: scale(1.05);
+					&.market {
+						background: $tibia-green;
+						box-shadow: 0 0 15px rgba($tibia-green, 0.5);
+						border-color: $tibia-gold;
+					}
 
-            &.market {
-              background: #3e5c3a;
-              box-shadow: 0 0 15px rgba(62, 92, 58, 0.5);
-              border-color: #d9a441;
-            }
+					&.token {
+						background: $tibia-gold;
+						box-shadow: 0 0 15px rgba($tibia-gold, 0.5);
+						border-color: $tibia-green;
+					}
+				}
+			}
+		}
+	}
 
-            &.token {
-              background: #d9a441;
-              box-shadow: 0 0 15px rgba(217, 164, 65, 0.5);
-              border-color: #3e5c3a;
-            }
-          }
-        }
-      }
-    }
+	.npc-command {
+		margin-top: 15px;
+		padding: 12px;
+		background: rgba($tibia-green, 0.1);
+		border: 2px solid $tibia-green;
+		border-radius: 8px;
+		display: flex;
+		align-items: center;
+		gap: 10px;
 
-    .npc-command {
-      margin-top: 15px;
-      padding: 12px;
-      background: rgba(62, 92, 58, 0.1);
-      border: 2px solid #3e5c3a;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
+		code {
+			flex: 1;
+			font-family: 'Courier New', monospace;
+			color: $tibia-green;
+			font-size: 12px;
+			font-weight: 500;
+		}
 
-      code {
-        flex: 1;
-        font-family: "Courier New", monospace;
-        color: #3e5c3a;
-        font-size: 12px;
-        font-weight: 500;
-      }
+		.copy-btn {
+			background: $tibia-green;
+			color: $tibia-gold-light;
+			border: none;
+			padding: 6px 10px;
+			border-radius: 6px;
+			cursor: pointer;
+			transition: all 0.2s;
+			display: flex;
+			align-items: center;
+			justify-content: center;
 
-      .copy-btn {
-        background: #3e5c3a;
-        color: #e8d7b1;
-        border: none;
-        padding: 6px 10px;
-        border-radius: 6px;
-        cursor: pointer;
-        transition: all 0.2s;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+			mat-icon {
+				font-size: 18px;
+				width: 18px;
+				height: 18px;
+				color: $tibia-gold-light;
+			}
 
-        mat-icon {
-          font-size: 18px;
-          width: 18px;
-          height: 18px;
-          color: #e8d7b1;
-        }
+			&:hover {
+				background: $tibia-brown-dark;
+				transform: scale(1.05);
+			}
+		}
+	}
+}
 
-        &:hover {
-          background: #4b2e05;
-          transform: scale(1.05);
-        }
-      }
-    }
-  }
+.total-cost {
+	padding: 20px;
+	border-top: 2px solid $tibia-gold;
+	background: rgba($tibia-gold, 0.1);
 
-  .total-cost {
-    padding: 20px;
-    border-top: 2px solid #d9a441;
-    background: rgba(217, 164, 65, 0.1);
+	h4 {
+		color: $tibia-brown-dark;
+		font-size: 12px;
+		font-weight: 500;
+		margin: 0 0 10px 0;
+		text-transform: uppercase;
+	}
 
-    h4 {
-      color: #4b2e05;
-      font-size: 12px;
-      font-weight: 500;
-      margin: 0 0 10px 0;
-      text-transform: uppercase;
-    }
+	.cost-value {
+		color: $tibia-green;
+		font-size: 24px;
+		font-weight: bold;
+		display: flex;
+		align-items: center;
+		gap: 8px;
 
-    .cost-value {
-      color: #3e5c3a;
-      font-size: 24px;
-      font-weight: bold;
-      display: flex;
-      align-items: center;
-      gap: 8px;
+		.gold-icon {
+			width: 28px;
+			height: 28px;
+			object-fit: contain;
+		}
+	}
 
-      .gold-icon {
-        width: 28px;
-        height: 28px;
-        object-fit: contain;
-      }
-    }
-
-    .savings {
-      margin-top: 10px;
-      color: #3e5c3a;
-      font-size: 14px;
-      font-weight: 600;
-      padding: 8px 12px;
-      background: rgba(62, 92, 58, 0.1);
-      border-radius: 6px;
-      border-left: 3px solid #3e5c3a;
-    }
-  }
+	.savings {
+		margin-top: 10px;
+		color: $tibia-green;
+		font-size: 14px;
+		font-weight: 600;
+		padding: 8px 12px;
+		background: rgba($tibia-green, 0.1);
+		border-radius: 6px;
+		border-left: 3px solid $tibia-green;
+	}
 }

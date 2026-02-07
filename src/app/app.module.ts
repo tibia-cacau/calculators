@@ -8,21 +8,23 @@ import { ImbuementsCostComponent } from './components/imbuements-cost/imbuements
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { NgModule } from '@angular/core';
+import { TibiaTabsComponent } from '../../../../shared-components/tibia-tabs/tibia-tabs.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    ExerciseWeaponsComponent,
-    ImbuementsCostComponent,
-  ],
-  imports: [
-    CommonModule,
-    AppRoutingModule,
-    ReactiveFormsModule,
-    FormsModule,
-    MatTooltipModule,
-    MatIconModule,
-  ],
-  providers: [],
+	declarations: [
+		AppComponent,
+		ExerciseWeaponsComponent,
+		ImbuementsCostComponent,
+	],
+	imports: [
+		CommonModule,
+		AppRoutingModule,
+		ReactiveFormsModule,
+		FormsModule,
+		MatTooltipModule,
+		MatIconModule,
+		TibiaTabsComponent,
+	],
+	providers: [],
 })
 export class AppModule {}
